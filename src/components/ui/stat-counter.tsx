@@ -33,7 +33,7 @@ export function StatCounter({
   }, [inView, value, duration]);
 
   return (
-    <span ref={ref}>
+    <span ref={ref} translate="no" className="notranslate">
       {display.toLocaleString("en-IN", {
         maximumFractionDigits: decimals,
         minimumFractionDigits: decimals,

@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Menu, X, MapPin, Phone } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
+import { LanguageToggle } from "@/components/language-toggle";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -68,6 +69,7 @@ export function Navbar() {
         </div>
 
         <div className="hidden lg:flex items-center gap-3">
+          <LanguageToggle />
           <Link
             href="/booking"
             className="rounded-full bg-brand-700 px-5 py-2.5 text-sm font-semibold text-cream-50 shadow-sm shadow-brand-900/20 transition-colors hover:bg-brand-800"
@@ -76,13 +78,16 @@ export function Navbar() {
           </Link>
         </div>
 
-        <button
-          className="lg:hidden rounded-full p-2 text-brand-800"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle menu"
-        >
-          {open ? <X className="size-6" /> : <Menu className="size-6" />}
-        </button>
+        <div className="flex items-center gap-2 lg:hidden">
+          <LanguageToggle />
+          <button
+            className="rounded-full p-2 text-brand-800"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Toggle menu"
+          >
+            {open ? <X className="size-6" /> : <Menu className="size-6" />}
+          </button>
+        </div>
       </nav>
 
       {open && (

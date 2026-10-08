@@ -135,3 +135,11 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Google Translate widget: hide its toolbar and tooltips */
+body { top: 0 !important; }
+iframe.skiptranslate,
+.goog-te-banner-frame,
+#goog-gt-tt,
+.goog-te-balloon-frame { display: none !important; }
+.goog-text-highlight { background: none !important; box-shadow: none !important; }
