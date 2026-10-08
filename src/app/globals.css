@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fffdf9;
+  --foreground: #241210;
+
+  --color-brand-50: #fbeceb;
+  --color-brand-100: #f6d2cf;
+  --color-brand-200: #eba9a3;
+  --color-brand-300: #dd7970;
+  --color-brand-400: #c84f42;
+  --color-brand-500: #a92e21;
+  --color-brand-600: #8a1f18;
+  --color-brand-700: #6e1815;
+  --color-brand-800: #591513;
+  --color-brand-900: #3d0f0e;
+  --color-brand-950: #240908;
+
+  --color-gold-50: #fdf8ec;
+  --color-gold-100: #faedc7;
+  --color-gold-200: #f4da8e;
+  --color-gold-300: #ecc158;
+  --color-gold-400: #e0a634;
+  --color-gold-500: #c98a1f;
+  --color-gold-600: #a86b18;
+  --color-gold-700: #855018;
+  --color-gold-800: #6c4018;
+  --color-gold-900: #5b3618;
+  --color-gold-950: #331c0b;
+
+  --color-cream-50: #fffdf9;
+  --color-cream-100: #fdf8ee;
+  --color-cream-200: #f8edd8;
+  --color-cream-300: #f1ddb8;
+
+  --color-ink-900: #241210;
+  --color-ink-700: #4a2e2a;
+  --color-ink-500: #7a5c56;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-playfair);
+
+  --color-brand-50: var(--color-brand-50);
+  --color-brand-100: var(--color-brand-100);
+  --color-brand-200: var(--color-brand-200);
+  --color-brand-300: var(--color-brand-300);
+  --color-brand-400: var(--color-brand-400);
+  --color-brand-500: var(--color-brand-500);
+  --color-brand-600: var(--color-brand-600);
+  --color-brand-700: var(--color-brand-700);
+  --color-brand-800: var(--color-brand-800);
+  --color-brand-900: var(--color-brand-900);
+  --color-brand-950: var(--color-brand-950);
+
+  --color-gold-50: var(--color-gold-50);
+  --color-gold-100: var(--color-gold-100);
+  --color-gold-200: var(--color-gold-200);
+  --color-gold-300: var(--color-gold-300);
+  --color-gold-400: var(--color-gold-400);
+  --color-gold-500: var(--color-gold-500);
+  --color-gold-600: var(--color-gold-600);
+  --color-gold-700: var(--color-gold-700);
+  --color-gold-800: var(--color-gold-800);
+  --color-gold-900: var(--color-gold-900);
+  --color-gold-950: var(--color-gold-950);
+
+  --color-cream-50: var(--color-cream-50);
+  --color-cream-100: var(--color-cream-100);
+  --color-cream-200: var(--color-cream-200);
+  --color-cream-300: var(--color-cream-300);
+
+  --color-ink-900: var(--color-ink-900);
+  --color-ink-700: var(--color-ink-700);
+  --color-ink-500: var(--color-ink-500);
+}
+
+body {
+  background: var(--color-cream-50);
+  color: var(--color-ink-900);
+  font-family: var(--font-sans);
+}
+
+.font-display {
+  font-family: var(--font-serif);
+}
+
+::selection {
+  background: var(--color-gold-300);
+  color: var(--color-brand-900);
+}
+
+/* Decorative temple-motif divider */
+.motif-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.motif-divider::before,
+.motif-divider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, var(--color-gold-400), transparent);
+}
+
+.bg-grain {
+  background-image: radial-gradient(var(--color-brand-900) 0.6px, transparent 0.6px);
+  background-size: 16px 16px;
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-14px); }
+}
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

@@ -1,0 +1,114 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum BookingType {
+  PACKAGE
+  HOTEL
+  CAR
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+}
+
+model Package {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  category    String
+  summary     String
+  description String
+  duration    String
+  price       Int
+  originalPrice Int?
+  rating      Float    @default(4.8)
+  reviewCount Int      @default(0)
+  image       String
+  gallery     String   @default("[]")
+  highlights  String   @default("[]")
+  itinerary   String   @default("[]")
+  inclusions  String   @default("[]")
+  popular     Boolean  @default(false)
+  maxGroup    Int      @default(15)
+  createdAt   DateTime @default(now())
+}
+
+model Hotel {
+  id           String   @id @default(cuid())
+  slug         String   @unique
+  name         String
+  category     String
+  location     String
+  description  String
+  pricePerNight Int
+  rating       Float   @default(4.5)
+  reviewCount  Int     @default(0)
+  image        String
+  gallery      String  @default("[]")
+  amenities    String  @default("[]")
+  distanceFromTemple String @default("")
+  createdAt    DateTime @default(now())
+}
+
+model Car {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  type        String
+  seats       Int
+  pricePerDay Int
+  withDriver  Boolean  @default(true)
+  ac          Boolean  @default(true)
+  image       String
+  gallery     String   @default("[]")
+  features    String   @default("[]")
+  rating      Float    @default(4.6)
+  createdAt   DateTime @default(now())
+}
+
+model Booking {
+  id          String        @id @default(cuid())
+  type        BookingType
+  itemId      String
+  itemName    String
+  name        String
+  email       String
+  phone       String
+  startDate   DateTime
+  endDate     DateTime?
+  guests      Int           @default(1)
+  notes       String        @default("")
+  status      BookingStatus @default(PENDING)
+  totalEstimate Int         @default(0)
+  createdAt   DateTime      @default(now())
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  name      String
+  location  String   @default("")
+  rating    Int
+  tourType  String   @default("")
+  comment   String
+  avatarSeed String  @default("")
+  approved  Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String   @default("")
+  subject   String   @default("")
+  message   String
+  createdAt DateTime @default(now())
+}
